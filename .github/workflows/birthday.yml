@@ -2,7 +2,7 @@ name: Birthday Email Automation
 
 on:
   schedule:
-    - cron: "30 3 * * *"   # Runs daily at 9:00 AM IST
+    - cron: "30 18 * * *"   # Runs daily at 12:00 AM IST
   workflow_dispatch:
 
 jobs:
@@ -25,4 +25,5 @@ jobs:
         env:
           EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          REAL_BIRTHDAYS_CSV: ${{ secrets.REAL_BIRTHDAYS_CSV }}
         run: python main.py
