@@ -1,4 +1,4 @@
-**Birthday Wisher Automailer**
+# **Birthday Wisher Automailer**
 
 This project is an automated birthday email sender built using Python. It automatically checks birthdays every day and sends personalized birthday wishes via email without any manual effort.
 
