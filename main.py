@@ -2,6 +2,7 @@ import datetime as dt
 import pandas
 import smtplib
 import os
+import base64
 
 # Get email credentials from environment variables (GitHub Secrets)
 MY_EMAIL = os.environ.get("EMAIL_ADDRESS")
@@ -10,6 +11,15 @@ MY_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 # Get today's date
 today = dt.datetime.now()
 today_tuple = (today.month, today.day)
+
+# Decode real birthdays CSV from GitHub Secret (if present)
+encoded_csv = os.environ.get("REAL_BIRTHDAYS_CSV")
+
+if encoded_csv:
+    decoded_csv = base64.b64decode(encoded_csv).decode("utf-8")
+    with open("birthdays.csv", "w") as f:
+        f.write(decoded_csv)
+
 
 # Read birthdays from CSV
 data = pandas.read_csv("birthdays.csv")
